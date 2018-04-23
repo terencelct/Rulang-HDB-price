@@ -9,7 +9,7 @@ shinyUI(fluidPage(
       br(),
       selectInput("distance", "2. Select the type of distnace", choices=c("total"=10,"within 1km"=1,"within2km"=2)),
       br(),
-      sliderInput("year","3.Select year for the histogram", min=1990, max=2018, value=1990,animate=TRUE),
+      sliderInput("year","3.Select year for the histogram", min=1990, max=2018, value=1990,animate=TRUE,sep=""),
       br(),
       
       sliderInput("bins","4.Select the number of BINs for the histogram", min=10, max=30, value=20)
