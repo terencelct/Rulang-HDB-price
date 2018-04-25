@@ -5,7 +5,7 @@ shinyUI(fluidPage(
   titlePanel(title=h4("Distribution of HDB price around rulang primary school",align="center")),
   sidebarLayout(
     sidebarPanel(
-      selectInput("var", "1. Select the type of price", choices=c("price"=1,"real price"=2,"log realprice"=3)),
+      selectInput("var", "1. Select the type of price", choices=c("price"=3,"real price"=4,"log realprice"=1,"residual"=2)),
       br(),
       selectInput("distance", "2. Select the type of distnace", choices=c("total"=10,"within 1km"=1,"within2km"=2)),
       br(),
