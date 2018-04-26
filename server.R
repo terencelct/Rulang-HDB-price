@@ -16,7 +16,7 @@ shinyServer(function(input,output){
     
     bins <- seq(min(x), max(x), length.out = input$bins + 1)
     hist(x)
-    h<-hist(x, breaks=bins, col="green",xlim=c(min(Rdata2[,colm]),max(Rdata2[,colm])),ylim=c(0,500), xlab="Housing price(fixed axis scale)",main=NA) 
+    h<-hist(x, breaks=bins, col="green",xlim=c(min(Rdata2[,colm]),max(Rdata2[,colm])),ylim=c(0,500), xlab="Housing price(fixed axis scale)",main="Histogram and PDF") 
     xfit<-seq(min(x),max(x),length=40) 
     yfit<-dnorm(xfit,mean=mean(x),sd=sd(x)) 
     yfit <- yfit*diff(h$mids[1:2])*length(x) 
@@ -34,7 +34,7 @@ shinyServer(function(input,output){
     colm2<- as.numeric(input$scale)
     x <- newd3[,colm]
     
-    plot(ecdf(x))
+    plot(ecdf(x),main="CDF plot",xlab="Housing price")
     
     
   }
