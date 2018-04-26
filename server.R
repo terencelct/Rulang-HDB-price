@@ -6,7 +6,7 @@ shinyServer(function(input,output){
 
   Rdata2 <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTuyy94aRkeYWEeISvd6lU17TsII56h8DFxJRMDUz3_8Ln-HQfAN07by4OuCPiRBW7GyEFcbzRF8f4B/pub?gid=1836512180&single=true&output=csv")
   output$density<-renderPlot({
-    
+    Rdata2 <- Rdata2[complete.cases(Rdata2), ]
     newd <- subset(Rdata2, year==input$year)
     newd2 <-subset(newd,distance<=input$distance)
     newd3 <- as.data.frame(newd2)
@@ -16,7 +16,7 @@ shinyServer(function(input,output){
     
     bins <- seq(min(x), max(x), length.out = input$bins + 1)
     hist(x)
-    h<-hist(x, breaks=bins, col="green",xlim=c(min(Rdata2[,colm]),max(Rdata2[,colm])),ylim=c(0,450), xlab="Housing price(fixed axis scale)",main=NA) 
+    h<-hist(x, breaks=bins, col="green",xlim=c(min(Rdata2[,colm]),max(Rdata2[,colm])),ylim=c(0,500), xlab="Housing price(fixed axis scale)",main=NA) 
     xfit<-seq(min(x),max(x),length=40) 
     yfit<-dnorm(xfit,mean=mean(x),sd=sd(x)) 
     yfit <- yfit*diff(h$mids[1:2])*length(x) 
